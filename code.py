@@ -15,8 +15,6 @@ display = adafruit_ili9341.ILI9341(display_bus, width=320, height=240)
 i2c = board.I2C()
 kbd = BBQ10Keyboard(i2c)
 
-kbd.backlight = 0.5
-
 while True:
     key_count = kbd.key_count
     if key_count > 0:
