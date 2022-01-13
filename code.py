@@ -27,4 +27,8 @@ while True:
         elif key[0] == STATE_RELEASE:
             state = 'released'
 
-        print("key: '%s' (dec %d, hex %02x) %s" % (key[1], ord(key[1]), ord(key[1]), state))
+         print(
+            "key: '%s' (dec %d, hex %02x) %s"
+            % (key[1], ord(key[1]), ord(key[1]), STATE)
+        )
+ 
