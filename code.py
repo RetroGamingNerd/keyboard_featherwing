@@ -1,7 +1,7 @@
-import board
 from bbq10keyboard import BBQ10Keyboard, STATE_PRESS, STATE_RELEASE, STATE_LONG_PRESS
 import adafruit_ili9341
 import displayio
+import board
 
 displayio.release_displays()
 
