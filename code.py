@@ -1,4 +1,4 @@
-from bbq10keyboard import BBQ10Keyboard
+from bbq10keyboard import BBQ10Keyboard, STATE_PRESS, STATE_RELEASE, STATE_LONG_PRESS
 import adafruit_ili9341
 import displayio
 import digitalio
@@ -25,7 +25,18 @@ print(touch.read_data())
 i2c = board.I2C()
 kbd = BBQ10Keyboard(i2c)
 
-while kbd.key_count == 0:
-    pass
-
-print(kbd.keys)
+message= ""
+while True:
+    if kbd.key_count > 1:
+        keys = kbd.keys
+        state,key=keys[1]
+        print(key,end='')
+        if key != '\n':
+            message+=key
+        else:
+            print(message)
+            if message == "do this":
+                print("got this")
+            elif message == "do that":
+                print("got that")
+            message= ""
