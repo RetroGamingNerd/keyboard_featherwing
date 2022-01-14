@@ -3,6 +3,8 @@ import adafruit_ili9341
 import displayio
 import digitalio
 import tsc2004
+import time
+import adafruit_mcp9808
 import board
 
 displayio.release_displays()
@@ -36,7 +38,12 @@ while True:
         else:
             print(message)
             if message == "do this":
-                print("got this")
+                print("Printing Temperature Readings")
+                tempC = mcp.temperature
+                tempF = tempC * 9 / 5 + 32
+                print("Temperature: {} C {} F ".format(tempC, tempF))
+                time.sleep(2)
             elif message == "do that":
                 print("got that")
             message= ""
+            
