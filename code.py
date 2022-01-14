@@ -27,6 +27,9 @@ print(touch.read_data())
 i2c = board.I2C()
 kbd = BBQ10Keyboard(i2c)
 
+i2c = board.I2C() 
+mcp = adafruit_mcp9808.MCP9808(i2c)
+
 message= ""
 while True:
     if kbd.key_count > 1:
