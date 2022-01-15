@@ -5,6 +5,7 @@ import digitalio
 import tsc2004
 import time
 import adafruit_mcp9808
+import neopixel
 import board
 
 displayio.release_displays()
@@ -24,11 +25,18 @@ while not touch.touched:
 
 print(touch.read_data())
 
+neopix_pin = board.D11
+pixels = neopixel.NeoPixel(neopix_pin, 1,brightness=0.1)
+pixels[0] = 0xFF00FF
+
 i2c = board.I2C()
 kbd = BBQ10Keyboard(i2c)
 mcp = adafruit_mcp9808.MCP9808(i2c)
 
+
 message= ""
+
+i = 1
 while True:
     if kbd.key_count > 1:
         keys = kbd.keys
@@ -38,7 +46,7 @@ while True:
             message+=key
         else:
             print(message)
-            if message == "print temp":
+            if message == "import temp":
                 print("Printing Temperature Readings")
                 tempC = mcp.temperature
                 tempF = tempC * 9 / 5 + 32
