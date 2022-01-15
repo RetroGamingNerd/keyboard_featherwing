@@ -20,15 +20,21 @@ display = adafruit_ili9341.ILI9341(display_bus, width=320, height=240)
 
 i2c = board.I2C()
 
+print("Touch Screen to Start")
+
 touch = tsc2004.TSC2004(i2c)
 while not touch.touched:
     pass
 
 print(touch.read_data())
 
+print("Commands")
+print("enter 'import temp' for temperature data")
+print("enter 'check battery' for battery level")
+
 neopix_pin = board.D11
-pixels = neopixel.NeoPixel(neopix_pin, 1,brightness=0.1)
-pixels[0] = 0xFF00FF
+pixels = neopixel.NeoPixel(neopix_pin, 1,brightness=0.05)
+pixels[0] = 0x00FF00
 
 i2c = board.I2C()
 kbd = BBQ10Keyboard(i2c)
@@ -38,7 +44,6 @@ sensor = LC709203F(board.I2C())
 
 message= ""
 
-i = 1
 while True:
     if kbd.key_count > 1:
         keys = kbd.keys
@@ -47,16 +52,15 @@ while True:
         if key != '\n':
             message+=key
         else:
-            print(message)
             if message == "import temp":
                 print("Printing Temperature Readings")
                 tempC = mcp.temperature
                 tempF = tempC * 9 / 5 + 32
                 print("Temperature: {} C {} F ".format(tempC, tempF))
-                time.sleep(2)
-            elif message == "do that":
-                print("LC709203F simple test")
-                print("Make sure LiPoly battery is plugged into the board!")
+                time.sleep(1)
+            elif message == "check battery":
+                print("Printing Battery Readings")
+                print("Make sure battery is plugged into the board!")
                 print("IC version:", hex(sensor.ic_version))
                 print("Battery: %0.3f Volts / %0.1f %%" % (sensor.cell_voltage, sensor.cell_percent))
                 time.sleep(1)
