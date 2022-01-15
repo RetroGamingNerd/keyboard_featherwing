@@ -26,8 +26,6 @@ print(touch.read_data())
 
 i2c = board.I2C()
 kbd = BBQ10Keyboard(i2c)
-
-i2c = board.I2C() 
 mcp = adafruit_mcp9808.MCP9808(i2c)
 
 message= ""
@@ -40,7 +38,7 @@ while True:
             message+=key
         else:
             print(message)
-            if message == "do this":
+            if message == "print temp":
                 print("Printing Temperature Readings")
                 tempC = mcp.temperature
                 tempF = tempC * 9 / 5 + 32
@@ -49,4 +47,4 @@ while True:
             elif message == "do that":
                 print("got that")
             message= ""
-            
+
