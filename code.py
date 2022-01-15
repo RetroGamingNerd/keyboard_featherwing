@@ -5,6 +5,7 @@ import digitalio
 import tsc2004
 import time
 import adafruit_mcp9808
+from adafruit_lc709203f import LC709203F
 import neopixel
 import board
 
@@ -33,6 +34,7 @@ i2c = board.I2C()
 kbd = BBQ10Keyboard(i2c)
 mcp = adafruit_mcp9808.MCP9808(i2c)
 
+sensor = LC709203F(board.I2C())
 
 message= ""
 
@@ -53,6 +55,10 @@ while True:
                 print("Temperature: {} C {} F ".format(tempC, tempF))
                 time.sleep(2)
             elif message == "do that":
-                print("got that")
+                print("LC709203F simple test")
+                print("Make sure LiPoly battery is plugged into the board!")
+                print("IC version:", hex(sensor.ic_version))
+                print("Battery: %0.3f Volts / %0.1f %%" % (sensor.cell_voltage, sensor.cell_percent))
+                time.sleep(1)
             message= ""
 
