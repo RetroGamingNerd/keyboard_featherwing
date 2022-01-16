@@ -57,11 +57,12 @@ while True:
             message+=key
         else:
             if message == "import temp":
-                print("Printing Temperature Readings")
-                tempC = mcp.temperature
-                tempF = tempC * 9 / 5 + 32
-                print("Temperature: {} C {} F ".format(tempC, tempF))
-                time.sleep(1)
+                for i in range(10):
+                    print("Printing Temperature Readings", i)
+                    tempC = mcp.temperature
+                    tempF = tempC * 9 / 5 + 32
+                    print("Temperature: {} C {} F ".format(tempC, tempF))
+                    time.sleep(1)
             elif message == "check battery":
                 print("Printing Battery Readings")
                 print("Make sure battery is plugged into the board!")
