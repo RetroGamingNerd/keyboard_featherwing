@@ -20,7 +20,7 @@ display = adafruit_ili9341.ILI9341(display_bus, width=320, height=240)
 
 i2c = board.I2C()
 
-time.sleep(2)
+time.sleep(1)
 
 print("Touch Screen to Start")
 
@@ -33,7 +33,7 @@ print(touch.read_data())
 time.sleep(1)
 
 print("Commands")
-print("enter 'import temp' for temperature data")
+print("enter 'check temp' for temperature data")
 print("enter 'check battery' for battery level")
 
 neopix_pin = board.D11
@@ -56,13 +56,14 @@ while True:
         if key != '\n':
             message+=key
         else:
-            if message == "import temp":
-                for i in range(10):
-                    print("Printing Temperature Readings", i)
+            if message == "check temp":
+                for i in range(30):
+                    print("Reading", i+1)
                     tempC = mcp.temperature
                     tempF = tempC * 9 / 5 + 32
                     print("Temperature: {} C {} F ".format(tempC, tempF))
-                    time.sleep(1)
+                    time.sleep(2)
+                print("Finished!")
             elif message == "check battery":
                 print("Printing Battery Readings")
                 print("Make sure battery is plugged into the board!")
