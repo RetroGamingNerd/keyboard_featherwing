@@ -37,6 +37,7 @@ print(touch.read_data())
 time.sleep(1)
 
 print("Commands")
+print()
 print("enter 'check temp' for temperature data")
 print("enter 'check battery' for battery level")
 
