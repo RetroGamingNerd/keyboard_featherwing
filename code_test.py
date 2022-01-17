@@ -37,9 +37,11 @@ print(touch.read_data())
 time.sleep(1)
 
 print("Commands")
-print()
+print(2 * "\n")
 print("enter 'check temp' for temperature data")
+print()
 print("enter 'check battery' for battery level")
+print()
 print("enter 'test' for test reply")
 
 neopix_pin = board.D11
