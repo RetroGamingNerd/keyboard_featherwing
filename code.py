@@ -4,10 +4,14 @@ import displayio
 import digitalio
 import tsc2004
 import time
-import adafruit_mcp9808
 from adafruit_lc709203f import LC709203F
+import adafruit_mcp9808
 import neopixel
 import board
+
+neopix_pin = board.D11
+pixels = neopixel.NeoPixel(neopix_pin, 1,brightness=0.05)
+pixels[0] = 0x00FF00
 
 displayio.release_displays()
 
@@ -20,6 +24,12 @@ display = adafruit_ili9341.ILI9341(display_bus, width=320, height=240)
 
 i2c = board.I2C()
 
+kbd = BBQ10Keyboard(i2c)
+
+mcp = adafruit_mcp9808.MCP9808(i2c)
+
+sensor = LC709203F(board.I2C())
+
 time.sleep(1)
 
 print("Touch Screen to Start")
@@ -29,22 +39,14 @@ while not touch.touched:
     pass
 
 print(touch.read_data())
-
-time.sleep(1)
-
+print(1 * "\n")
 print("Commands")
+print(1 * "\n")
 print("enter 'check temp' for temperature data")
+print()
 print("enter 'check battery' for battery level")
-
-neopix_pin = board.D11
-pixels = neopixel.NeoPixel(neopix_pin, 1,brightness=0.05)
-pixels[0] = 0x00FF00
-
-i2c = board.I2C()
-kbd = BBQ10Keyboard(i2c)
-mcp = adafruit_mcp9808.MCP9808(i2c)
-
-sensor = LC709203F(board.I2C())
+print()
+print("enter 'test' for test reply")
 
 message= ""
 
@@ -70,5 +72,6 @@ while True:
                 print("IC version:", hex(sensor.ic_version))
                 print("Battery: %0.3f Volts / %0.1f %%" % (sensor.cell_voltage, sensor.cell_percent))
                 time.sleep(1)
+            elif message == "test":
+                print("test reply")
             message= ""
-
