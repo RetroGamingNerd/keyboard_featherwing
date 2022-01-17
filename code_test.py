@@ -38,8 +38,6 @@ while not touch.touched:
 
 print(touch.read_data())
 
-time.sleep(1)
-
 print("Commands")
 print(2 * "\n")
 print("enter 'check temp' for temperature data")
