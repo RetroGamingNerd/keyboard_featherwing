@@ -13,6 +13,10 @@ try:
 except ImportError:
     pass
 
+neopix_pin = board.D11
+pixels = neopixel.NeoPixel(neopix_pin, 1,brightness=0.05)
+pixels[0] = 0x00FF00
+
 displayio.release_displays()
 
 spi = board.SPI()
@@ -43,10 +47,6 @@ print()
 print("enter 'check battery' for battery level")
 print()
 print("enter 'test' for test reply")
-
-neopix_pin = board.D11
-pixels = neopixel.NeoPixel(neopix_pin, 1,brightness=0.05)
-pixels[0] = 0x00FF00
 
 i2c = board.I2C()
 kbd = BBQ10Keyboard(i2c)
