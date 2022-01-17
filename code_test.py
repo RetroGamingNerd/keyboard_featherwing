@@ -40,6 +40,7 @@ print("Commands")
 print()
 print("enter 'check temp' for temperature data")
 print("enter 'check battery' for battery level")
+print("enter 'test' for test reply")
 
 neopix_pin = board.D11
 pixels = neopixel.NeoPixel(neopix_pin, 1,brightness=0.05)
@@ -75,4 +76,6 @@ while True:
                 print("IC version:", hex(sensor.ic_version))
                 print("Battery: %0.3f Volts / %0.1f %%" % (sensor.cell_voltage, sensor.cell_percent))
                 time.sleep(1)
+            elif message == "test":
+                print("test reply")
             message= ""
