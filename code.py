@@ -4,8 +4,8 @@ import displayio
 import digitalio
 import tsc2004
 import time
-import adafruit_mcp9808
 from adafruit_lc709203f import LC709203F
+import adafruit_mcp9808
 import neopixel
 import board
 
@@ -29,7 +29,7 @@ sensor = LC709203F(board.I2C())
 
 time.sleep(1)
 
-print("Touch Screen to Start")
+print("------------- Touch Screen to Start -------------")
 
 touch = tsc2004.TSC2004(i2c)
 while not touch.touched:
@@ -39,15 +39,15 @@ print(touch.read_data())
 print(1 * "\n")
 print("---------------------- MENU ----------------------")
 print(1 * "\n")
-print("enter 'check temp' for temperature data")
+print("1# Enter 'check temp' for temperature data")
 print()
-print("enter 'check battery' for battery level")
+print("2# Enter 'check battery' for battery level")
 print()
-print("enter 'test' for test reply")
+print("3# Enter 'test' for test reply")
 print()
-print("enter 'test' for test reply")
+print("4# Enter 'test 1' for test 1 reply")
 print()
-print("enter 'test' for test reply")
+print("5# Enter 'test 2' for test 2 reply")
 print(1 * "\n")
 
 message= ""
@@ -76,4 +76,8 @@ while True:
                 time.sleep(1)
             elif message == "test":
                 print("test reply")
+            elif message == "test 1":
+                print("test 1 reply")
+            elif message == "test 2":
+                print("test 2 reply")
             message= ""
