@@ -47,7 +47,7 @@ print("3# Enter 'test' for test reply")
 print()
 print("4# Enter 'test 1' for test 1 reply")
 print()
-print("5# Enter 'test 2' for test 2 reply")
+print("5# Enter 'menu' for MENU")
 print(1 * "\n")
 
 message= ""
@@ -62,22 +62,39 @@ while True:
         else:
             if message == "check temp":
                 for i in range(30):
+                    print()
                     print("Reading", i+1)
                     tempC = mcp.temperature
                     tempF = tempC * 9 / 5 + 32
                     print("Temperature: {} C {} F ".format(tempC, tempF))
                     time.sleep(2)
+                print()
                 print("Finished!")
             elif message == "check battery":
+                print()
                 print("Printing Battery Readings")
                 print("Make sure battery is plugged into the board!")
+                print()
                 print("IC version:", hex(sensor.ic_version))
+                print()
                 print("Battery: %0.3f Volts / %0.1f %%" % (sensor.cell_voltage, sensor.cell_percent))
                 time.sleep(1)
             elif message == "test":
                 print("test reply")
             elif message == "test 1":
                 print("test 1 reply")
-            elif message == "test 2":
-                print("test 2 reply")
+            elif message == "menu":
+                print(1 * "\n")
+                print("---------------------- MENU ----------------------")
+                print(1 * "\n")
+                print("1# Enter 'check temp' for temperature data")
+                print()
+                print("2# Enter 'check battery' for battery level")
+                print()
+                print("3# Enter 'test' for test reply")
+                print()
+                print("4# Enter 'test 1' for test 1 reply")
+                print()
+                print("5# Enter 'test 2' for test 2 reply")
+                print(1 * "\n")
             message= ""
