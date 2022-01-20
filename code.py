@@ -23,11 +23,8 @@ display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs)
 display = adafruit_ili9341.ILI9341(display_bus, width=320, height=240)
 
 i2c = board.I2C()
-
 kbd = BBQ10Keyboard(i2c)
-
 mcp = adafruit_mcp9808.MCP9808(i2c)
-
 sensor = LC709203F(board.I2C())
 
 time.sleep(1)
@@ -47,6 +44,7 @@ print()
 print("enter 'check battery' for battery level")
 print()
 print("enter 'test' for test reply")
+print(2 * "\n")
 
 message= ""
 
