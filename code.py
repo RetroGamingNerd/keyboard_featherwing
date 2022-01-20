@@ -37,7 +37,7 @@ while not touch.touched:
 
 print(touch.read_data())
 print(1 * "\n")
-print("Commands")
+print("---------------------- MENU ----------------------")
 print(1 * "\n")
 print("enter 'check temp' for temperature data")
 print()
