@@ -4,8 +4,8 @@ import displayio
 import digitalio
 import tsc2004
 import time
-from adafruit_lc709203f import LC709203F
 import adafruit_mcp9808
+from adafruit_lc709203f import LC709203F
 import neopixel
 import board
 
@@ -44,7 +44,11 @@ print()
 print("enter 'check battery' for battery level")
 print()
 print("enter 'test' for test reply")
-print(2 * "\n")
+print()
+print("enter 'test' for test reply")
+print()
+print("enter 'test' for test reply")
+print(1 * "\n")
 
 message= ""
 
