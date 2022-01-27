@@ -24,11 +24,16 @@ display = adafruit_ili9341.ILI9341(display_bus, width=320, height=240)
 
 i2c = board.I2C()
 kbd = BBQ10Keyboard(i2c)
-mcp = adafruit_mcp9808.MCP9808(i2c)
 sensor = LC709203F(board.I2C())
+try:
+    mcp = adafruit_mcp9808.MCP9808(i2c)
+    print ('MCP9808 Attached')
+except Exception as e:
+    print('MCP9808 Error:', e)
 
 time.sleep(1)
 
+print(1 * "\n")
 print("------------- Touch Screen to Start -------------")
 
 touch = tsc2004.TSC2004(i2c)
