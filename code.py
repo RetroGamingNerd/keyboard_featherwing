@@ -28,8 +28,8 @@ sensor = LC709203F(board.I2C())
 try:
     mcp = adafruit_mcp9808.MCP9808(i2c)
     print ('MCP9808 Attached')
-except Exception as e:
-    print('MCP9808 Error:', e)
+except:
+    pass
 
 time.sleep(1)
 
@@ -43,7 +43,9 @@ while not touch.touched:
 print(touch.read_data())
 print(1 * "\n")
 print("---------------------- MENU ----------------------")
-print(1 * "\n")
+print("****** Connect Sensors then Restart Device ******")
+print()
+print()
 print("1# Enter 'check temp' for temperature data")
 print()
 print("2# Enter 'check battery' for battery level")
@@ -53,7 +55,7 @@ print()
 print("4# Enter 'test 1' for test 1 reply")
 print()
 print("5# Enter 'menu' for MENU")
-print(1 * "\n")
+print()
 
 message= ""
 
@@ -76,7 +78,7 @@ while True:
                 print()
                 print("Finished!")
             elif message == "check battery":
-                print()
+                print(7 * "\n")
                 print("Printing Battery Readings")
                 print("Make sure battery is plugged into the board!")
                 print()
@@ -91,7 +93,8 @@ while True:
             elif message == "menu":
                 print(1 * "\n")
                 print("---------------------- MENU ----------------------")
-                print(1 * "\n")
+                print(" ********** Choose from the list below ********** ")
+                print()
                 print("1# Enter 'check temp' for temperature data")
                 print()
                 print("2# Enter 'check battery' for battery level")
@@ -100,6 +103,6 @@ while True:
                 print()
                 print("4# Enter 'test 1' for test 1 reply")
                 print()
-                print("5# Enter 'test 2' for test 2 reply")
-                print(1 * "\n")
+                print("5# Enter 'menu' for MENU")
+                print()
             message= ""
