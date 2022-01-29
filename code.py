@@ -27,8 +27,9 @@ kbd = BBQ10Keyboard(i2c)
 sensor = LC709203F(board.I2C())
 try:
     mcp = adafruit_mcp9808.MCP9808(i2c)
-    print ('MCP9808 Attached')
+    print ('MCP9808 Connected')
 except:
+    print ('MCP9808 Disconnected')
     pass
 
 time.sleep(1)
@@ -41,10 +42,9 @@ while not touch.touched:
     pass
 
 print(touch.read_data())
-print(1 * "\n")
+print(2 * "\n")
 print("---------------------- MENU ----------------------")
-print("****** Connect Sensors then Restart Device ******")
-print()
+print(" ******* Connect Sensors Before Selecting ******* ")
 print()
 print("1# Enter 'check temp' for temperature data")
 print()
