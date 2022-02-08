@@ -7,6 +7,7 @@ import time
 from adafruit_lc709203f import LC709203F
 import adafruit_mcp9808
 import neopixel
+import microcontroller
 import board
 
 neopix_pin = board.D11
@@ -52,7 +53,7 @@ print("2# Enter 'check battery' for battery level")
 print()
 print("3# Enter 'test' for test reply")
 print()
-print("4# Enter 'test 1' for test 1 reply")
+print("4# Enter 'info' for microcontroller information")
 print()
 print("5# Enter 'menu' for MENU")
 print()
@@ -86,8 +87,18 @@ while True:
                 print()
                 print("Battery: %0.3f Volts / %0.1f %%" % (sensor.cell_voltage, sensor.cell_percent))
                 time.sleep(1)
-            elif message == "test":
-                print("test reply")
+            elif message == "info":
+                print(7 * "\n")
+                print("CPU Information")
+                print()
+                print("Project: Portable Sensor Platform")
+                print("OS Version 1.3")
+                print()
+                print("CPU 1 Temperature:", microcontroller.cpus[0].temperature)
+                print("CPU 1 Frequency:", microcontroller.cpus[0].frequency)
+                print()
+                print("CPU 2 Temperature:", microcontroller.cpus[1].temperature)
+                print("CPU 2 Frequency:", microcontroller.cpus[1].frequency)
             elif message == "test 1":
                 print("test 1 reply")
             elif message == "menu":
@@ -101,7 +112,7 @@ while True:
                 print()
                 print("3# Enter 'test' for test reply")
                 print()
-                print("4# Enter 'test 1' for test 1 reply")
+                print("4# Enter 'info' for microcontroller information")
                 print()
                 print("5# Enter 'menu' for MENU")
                 print()
