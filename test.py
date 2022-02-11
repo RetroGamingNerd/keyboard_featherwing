@@ -41,6 +41,12 @@ except:
 time.sleep(1)
 
 print(1 * "\n")
+print(" _|    _|            _|  _|")           
+print(" _|    _|    _|_|    _|  _|    _|_|")    
+print(" _|_|_|_|  _|_|_|_|  _|  _|  _|    _|")  
+print(" _|    _|  _|        _|  _|  _|    _|")  
+print(" _|    _|    _|_|_|  _|  _|    _|_|") 
+
 print("------------- Touch Screen to Start -------------")
 
 touch = tsc2004.TSC2004(i2c)
