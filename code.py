@@ -9,6 +9,7 @@ import adafruit_mcp9808
 import neopixel
 import microcontroller
 import board
+import gc
 
 neopix_pin = board.D11
 pixels = neopixel.NeoPixel(neopix_pin, 1,brightness=0.05)
@@ -23,6 +24,10 @@ tft_dc = board.D10
 display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs)
 display = adafruit_ili9341.ILI9341(display_bus, width=320, height=240)
 
+gc.collect()
+start_mem = gc.mem_free()
+print( "Memory: {} bytes".format(start_mem) )
+
 i2c = board.I2C()
 kbd = BBQ10Keyboard(i2c)
 sensor = LC709203F(board.I2C())
@@ -35,6 +40,12 @@ except:
 
 time.sleep(1)
 
+print(1 * "\n")
+print("     _|    _|            _|  _|")
+print("     _|    _|    _|_|    _|  _|    _|_|")
+print("     _|_|_|_|  _|_|_|_|  _|  _|  _|    _|")
+print("     _|    _|  _|        _|  _|  _|    _|")
+print("     _|    _|    _|_|_|  _|  _|    _|_|")
 print(1 * "\n")
 print("------------- Touch Screen to Start -------------")
 
@@ -88,6 +99,8 @@ while True:
                 print("Battery: %0.3f Volts / %0.1f %%" % (sensor.cell_voltage, sensor.cell_percent))
                 time.sleep(1)
             elif message == "info":
+                gc.collect()
+                end_mem = gc.mem_free()
                 print(7 * "\n")
                 print("CPU Information")
                 print()
@@ -99,6 +112,9 @@ while True:
                 print()
                 print("CPU 2 Temperature:", microcontroller.cpus[1].temperature)
                 print("CPU 2 Frequency:", microcontroller.cpus[1].frequency)
+                print()
+                print( "Available Memory: {} bytes".format(end_mem) )
+                print( "Memory Used: {} bytes".format(start_mem - end_mem) )
             elif message == "test 1":
                 print("test 1 reply")
             elif message == "menu":
